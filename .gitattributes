@@ -1,0 +1,7 @@
+# Keep line endings stable across platforms: this repo is mostly data and docs,
+# so normalise everything to LF in the repository.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.mp3 binary
