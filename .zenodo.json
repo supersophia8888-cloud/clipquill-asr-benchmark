@@ -1,6 +1,6 @@
 {
   "title": "whisper-tiny vs whisper-base in a browser tab: word error rate, timing, transfer size and peak memory",
-  "description": "Measurements of two quantised Whisper tiers (onnx-community/whisper-tiny and onnx-community/whisper-base) running client-side in a real Chrome window. Word error rate on eight clips across five acoustic conditions (229 reference words), wall-clock timing on byte-identical audio from 13 to 1610 seconds, per-file transfer size of the model as served, peak resident memory of the browser process tree, browser decodability of eight container formats, and a single-clip Mandarin character error rate at three normalization levels.",
+  "description": "Measurements of two quantised Whisper tiers (onnx-community/whisper-tiny and onnx-community/whisper-base) running client-side in a real Chrome window. Word error rate on eight clips across five acoustic conditions (229 reference words), wall-clock timing on byte-identical audio from 13 to 1610 seconds, per-file transfer size of the model as served, peak resident memory of the browser process tree, browser decodability of eight container formats, and a single-clip Mandarin character error rate at three normalization levels. The measurements were taken on <a href=\"https://clipquill.com\">clipquill.com</a>, a page that runs the model in the visitor's own tab.",
   "creators": [
     {
       "name": "Clipquill",
