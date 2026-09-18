@@ -1,0 +1,25 @@
+{
+  "title": "whisper-tiny vs whisper-base in a browser tab: word error rate, timing, transfer size and peak memory",
+  "description": "Measurements of two quantised Whisper tiers (onnx-community/whisper-tiny and onnx-community/whisper-base) running client-side in a real Chrome window. Word error rate on eight clips across five acoustic conditions (229 reference words), wall-clock timing on byte-identical audio from 13 to 1610 seconds, per-file transfer size of the model as served, peak resident memory of the browser process tree, browser decodability of eight container formats, and a single-clip Mandarin character error rate at three normalization levels.",
+  "creators": [
+    {
+      "name": "Clipquill",
+      "affiliation": "clipquill.com"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "publication_date": "2026-09-18",
+  "keywords": [
+    "speech recognition",
+    "whisper",
+    "word error rate",
+    "browser",
+    "wasm",
+    "onnx",
+    "benchmark",
+    "client-side inference"
+  ],
+  "notes": "Measurement machine: 2-core AMD EPYC 9754, 3.94 GB RAM, shared CPU. Two speakers only, one noise type. See METHOD.md for the full list of what is not covered."
+}

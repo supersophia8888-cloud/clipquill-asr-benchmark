@@ -1,0 +1,10 @@
+﻿# Peak resident memory of the whole Chrome process tree spawned for each
+# measurement run. Sampled every 3 s via CDP SystemInfo.getProcessInfo to get
+# process ids, then tasklist summing WorkingSetSize for those ids.
+# The browser's own JS heap is not used: the model lives in a worker, which the
+# page-level heap snapshot does not show.
+audio_seconds,cold_peak_mb,warm_peak_mb
+13,1128,821
+60,919,823
+277,969,921
+1610,977,999

@@ -1,0 +1,9 @@
+﻿sample_id,condition,audio_seconds,reference_words,tiny_wer_pct,base_wer_pct,tiny_error_words,base_error_words,tiny_elapsed_s,base_elapsed_s
+A-clean,clean_synthetic_tts,10.0,33,6.1,6.1,2,2,21.3,22.0
+C1-real-clean,real_speech_no_noise,5.9,17,11.8,5.9,2,1,5.1,8.1
+C2-real-clean,real_speech_no_noise,4.8,11,36.4,18.2,4,2,5.1,7.1
+D1-real-noise-light,real_speech_light_pink_noise,12.5,32,40.6,6.3,13,2,8.4,8.1
+D2-real-noise-light,real_speech_light_pink_noise,9.9,25,72.0,12.0,18,3,5.1,8.1
+B-hard,real_speech_telephone_band_echo,11.2,22,63.6,22.7,14,5,7.4,11.3
+E2-real-noise-heavy,real_speech_heavy_pink_noise,9.0,18,83.3,11.1,15,2,4.1,8.1
+E1-real-noise-heavy,real_speech_heavy_pink_noise,29.4,71,94.4,39.4,67,28,17.2,10.2

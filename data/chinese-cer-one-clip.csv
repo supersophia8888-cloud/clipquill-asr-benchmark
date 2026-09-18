@@ -1,0 +1,9 @@
+﻿# Chinese (Mandarin) measurement, whisper-base, clipquill.com, 2026-09-18.
+# Clip: 23.088 s, 97 reference characters, language manually set to "zh".
+# The model emits Traditional Chinese while the reference text is Simplified,
+# so a raw character comparison is meaningless: 36 of the 97 characters differ
+# only by script. Three normalization levels are reported.
+normalization,reference_chars,wrong_chars,deletions,insertions,cer_pct
+raw_traditional_vs_simplified,97,42,0,0,43.3
+after_zhconv_to_zh_cn,97,7,0,0,7.2
+after_zhconv_plus_digit_normalization,97,6,0,0,6.2

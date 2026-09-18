@@ -1,0 +1,29 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "type": "Dataset",
+  "name": "whisper-tiny vs whisper-base in a browser tab: word error rate, timing, transfer size and peak memory",
+  "version": "1.0.0",
+  "datePublished": "2026-09-18",
+  "author": [
+    {
+      "@type": "Organization",
+      "name": "Clipquill",
+      "url": "https://clipquill.com"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "url": "https://clipquill.com",
+  "keywords": [
+    "speech recognition",
+    "whisper",
+    "word error rate",
+    "browser",
+    "wasm",
+    "onnx",
+    "benchmark",
+    "client-side inference"
+  ],
+  "description": "Measurements of two quantised Whisper tiers running client-side in a real Chrome window: word error rate on eight clips across five acoustic conditions, timing on byte-identical audio from 13 to 1610 seconds, per-file transfer size, peak resident memory, container decodability, and a single-clip Mandarin character error rate.",
+  "measurementTechnique": "Chrome DevTools Protocol driving a real (non-headless) Chrome window; WER by DP alignment against reference transcripts; memory measured at OS level from the spawned process tree",
+  "softwareRequirements": "Node.js 22 (CDP harness), Python 3.13 (optional: COOP/COEP static server, CER normalization)"
+}

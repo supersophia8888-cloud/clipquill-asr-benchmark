@@ -1,0 +1,12 @@
+﻿# Live timings measured on the public site https://clipquill.com , 2026-09-18,
+# real (non-headless) Chrome window, over the public internet, on a 2-core
+# 3.94 GB machine that was also running other workloads.
+# cold = Cache Storage + HTTP cache cleared, then reload (re-downloads 78.4 MiB)
+# warm = same profile reloaded, model already in Cache Storage
+# app_reported = seconds shown by the page's own status line (file handed over ->
+#   text on screen); wall_clock = measured by the harness (adds file read + decode)
+audio_seconds,cold_app_reported_s,cold_wall_clock_s,warm_app_reported_s,warm_wall_clock_s
+13,44.1,45.2,23.1,23.5
+60,37.2,38.9,22.8,24.9
+277,96.3,98.9,102.2,105.2
+1610,543.4,550.4,479.3,485.7

@@ -1,0 +1,18 @@
+﻿# Per-file transfer size of whisper-base as served by clipquill.com, 2026-09-18.
+# bytes_on_wire = what actually crossed the network (brotli where applicable)
+# bytes_decoded = size after decompression. ONNX weights barely compress, which
+# is why 74.0 of the 78.4 MiB first-visit total is model weights at full size.
+file,bytes_decoded,bytes_on_wire_brotli,compressed
+models/whisper-base/config.json,2243,874,yes
+models/whisper-base/tokenizer.json,2480466,641057,yes
+models/whisper-base/tokenizer_config.json,282682,5586,yes
+models/whisper-base/preprocessor_config.json,339,203,yes
+models/whisper-base/generation_config.json,3832,1080,yes
+models/whisper-base/added_tokens.json,34604,3460,yes
+models/whisper-base/special_tokens_map.json,2194,424,yes
+onnx/encoder_model_quantized.onnx,23201314,23201314,no
+onnx/decoder_model_merged_quantized.onnx.part1,20971520,20971520,no
+onnx/decoder_model_merged_quantized.onnx.part2,20971520,20971520,no
+onnx/decoder_model_merged_quantized.onnx.part3,11750275,11750275,no
+MODEL_SUBTOTAL,79700989,77547313,
+WHOLE_FIRST_VISIT_INCLUDING_RUNTIME_AND_PAGE,102272429,82233500,

@@ -1,0 +1,10 @@
+﻿# Same-material A/B timing, local build, real Chrome window, 2026-09-17/18.
+# Both model tiers ran byte-identical audio (the 8 clips concatenated into a
+# 92.619 s pool, then cut/looped to the lengths below).
+# First row is a cold start (includes model download); the rest are warm.
+# rtf = real time factor = processing_seconds / audio_seconds (lower is faster).
+audio_seconds,tiny_seconds,base_seconds,base_speedup_vs_tiny,tiny_rtf,base_rtf,note
+13,28.5,27.4,1.04,2.19,2.11,cold_start_includes_model_download
+60,56.5,24.6,2.30,0.94,0.41,warm
+277,144.2,79.9,1.80,0.52,0.29,warm
+1610,673.6,445.9,1.51,0.42,0.28,warm_single_run
