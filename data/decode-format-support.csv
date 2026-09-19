@@ -1,7 +1,3 @@
-﻿# Browser-side decodability of container formats, real Chrome window with
-# crossOriginIsolated = true, 2026-09-18. 2 s 440 Hz mono test tones produced
-# with ffmpeg and injected straight into AudioContext.decodeAudioData().
-# This tests decoding only - the 76 MiB model is not loaded.
 container,decoded,duration_s,channels,sample_rate_hz,note
 mp3,yes,2.00,1,44100,
 wav,yes,2.00,1,44100,
