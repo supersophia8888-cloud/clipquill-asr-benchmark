@@ -121,6 +121,7 @@ This dataset is archived on Zenodo. Cite the version DOI for one specific releas
 point at the dataset as a whole.
 
 - Concept DOI, all versions: https://doi.org/10.5281/zenodo.22826968
+- Version DOI, v1.0.1: https://doi.org/10.5281/zenodo.22840611
 - Version DOI, v1.0.0: https://doi.org/10.5281/zenodo.22826969
 
 The same files are also published as a Hugging Face dataset:
