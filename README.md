@@ -1,3 +1,40 @@
+---
+license: cc-by-4.0
+language:
+  - en
+pretty_name: whisper-tiny vs whisper-base in a browser tab
+task_categories:
+  - automatic-speech-recognition
+size_categories:
+  - n<1K
+tags:
+  - whisper
+  - word-error-rate
+  - benchmark
+  - browser
+  - wasm
+  - onnx
+  - client-side-inference
+  - speech-recognition
+configs:
+  - config_name: wer_by_sample
+    data_files: data/wer-by-sample.csv
+  - config_name: wer_by_condition
+    data_files: data/wer-by-condition.csv
+  - config_name: timing_same_material_local
+    data_files: data/timing-same-material-local.csv
+  - config_name: timing_live_clipquill_com
+    data_files: data/timing-live-clipquill-com.csv
+  - config_name: memory_peak
+    data_files: data/memory-peak.csv
+  - config_name: transfer_size_by_file
+    data_files: data/transfer-size-by-file.csv
+  - config_name: chinese_cer_one_clip
+    data_files: data/chinese-cer-one-clip.csv
+  - config_name: decode_format_support
+    data_files: data/decode-format-support.csv
+---
+
 # Measuring whisper-tiny vs whisper-base in a browser tab
 
 Word error rate, wall-clock timing, transfer size and peak memory for two
@@ -77,6 +114,17 @@ Data and documentation are CC BY 4.0 (`LICENSE`). Scripts are MIT
 (`scripts/LICENSE`). If you reuse the data, please keep the attribution and
 say which measurement date you are citing — the numbers move when the model or
 the page changes.
+
+## Archived versions and DOI
+
+This dataset is archived on Zenodo. Cite the version DOI for one specific release, or the concept DOI to
+point at the dataset as a whole.
+
+- Concept DOI, all versions: https://doi.org/10.5281/zenodo.22826968
+- Version DOI, v1.0.0: https://doi.org/10.5281/zenodo.22826969
+
+The same files are also published as a Hugging Face dataset:
+https://huggingface.co/datasets/sophia8888/clipquill-asr-benchmark
 
 ## Citing
 
