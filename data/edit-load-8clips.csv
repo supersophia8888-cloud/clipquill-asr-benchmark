@@ -1,0 +1,10 @@
+﻿sample_id,condition,reference_words,tiny_dropped,tiny_spots,base_dropped,base_spots,small_dropped,small_spots,cloud_dropped,cloud_spots
+A-clean,clean_synthetic_tts,33,0,1,0,1,0,0,0,2
+C1-real-clean,real_speech_no_noise,17,0,1,0,1,0,1,0,1
+C2-real-clean,real_speech_no_noise,11,1,1,0,1,0,1,1,1
+D1-real-noise-light,real_speech_light_pink_noise,32,0,5,0,2,0,1,0,0
+D2-real-noise-light,real_speech_light_pink_noise,25,0,6,0,3,0,3,0,0
+B-hard,real_speech_telephone_band_echo,22,7,3,1,2,0,0,0,0
+E2-real-noise-heavy,real_speech_heavy_pink_noise,18,2,4,0,1,0,2,0,1
+E1-real-noise-heavy,real_speech_heavy_pink_noise,71,5,10,12,12,7,10,6,11
+ALL_EIGHT,all_eight_clips,229,15,31,13,23,7,18,7,16

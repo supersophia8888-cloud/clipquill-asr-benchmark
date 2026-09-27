@@ -28,6 +28,44 @@ Eight clips, 229 reference words total, in five acoustic conditions:
 Scoring is DP alignment of hypothesis to reference after light normalization.
 Grouped figures are weighted by reference word count, not averaged.
 
+## Edit load (dropped words and hand-fix spots)
+
+The same eight clips and the same three long files, scored a second way because a
+single percentage hides what you actually do when fixing a transcript:
+
+- **Words dropped** — reference words absent from the hypothesis (deletions from
+  the edit-distance alignment). Silent: you do not know they were missing.
+- **Spots to fix by hand** — a run of consecutive edits (any mix of substitution,
+  deletion, insertion) counts as one spot; the run breaks the moment one reference
+  word matches. A 22-word invented sentence is one spot but 22 wrong words.
+
+Normalisation, alignment and the "one spot" rule are identical across every tier
+and every clip, and identical to the word-error-rate scoring above except for how
+the edit operations are collapsed. The four tiers are `tiny`, `base` (shipped),
+`small`, and a cloud API used as a reference point only.
+
+Tiny on long files fell into a recite/hallucination loop; those rows are reported
+as-is and are not corrected. Tiny on the hardest short clip (E1) was not
+reproducible across three runs (84.5 / 94.4 / 111.3 %), so that cell is a range.
+
+## Cloud reference row
+
+The cloud figures are Google Cloud Speech-to-Text v1. Eight short clips used the
+synchronous recognition method; the three long files used the long-running
+recognition method, because the synchronous method rejects audio longer than one
+minute (`Sync input too long`). `model` was not specified, so the API default was
+used; Chirp / Chirp 2 were not selected. Calls were made 2026-09-27 (8 clips) and
+2026-09-28 (long files), with `languageCode: en-US`,
+`enableAutomaticPunctuation: true`, `encoding: MP3`, from this machine using
+Application Default Credentials with the project named per call. Long files were
+uploaded to Cloud Storage and passed in as a `gs://` URI.
+
+The local tiers and the cloud API ran on the **identical MP3 files** — LibriSpeech
+`dev-clean` FLAC re-encoded to 16 kHz mono MP3 (64 kb/s long files, 24 kb/s short
+clips; A-clean is 24 kHz / 48 kb/s, the one exception, same file both sides). The
+cloud row is a benchmark reference object, not an endorsed tool, and is reported
+with its full source so the comparison can be checked.
+
 ## Timing
 
 Two separate measurements, deliberately not mixed:

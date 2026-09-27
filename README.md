@@ -33,6 +33,10 @@ configs:
     data_files: data/chinese-cer-one-clip.csv
   - config_name: decode_format_support
     data_files: data/decode-format-support.csv
+  - config_name: edit_load_8clips
+    data_files: data/edit-load-8clips.csv
+  - config_name: edit_load_longfiles
+    data_files: data/edit-load-longfiles.csv
 ---
 
 # Measuring whisper-tiny vs whisper-base in a browser tab
@@ -80,6 +84,61 @@ Weighted WER by acoustic condition, 8 clips / 229 reference words:
 | **all** | **8** | **229** | **59.0 %** | **19.7 %** |
 
 `base` is better on 7 of 8 clips and tied on the eighth. It is not worse on any.
+
+## Edit-load tables (2026-09-28 expansion)
+
+The word-error-rate tables above count wrong words as a percentage. These two
+tables count the same runs a different way, because a percentage hides the thing
+that actually matters when you are fixing a transcript by hand:
+
+- **Words dropped** — reference words the transcript never produced (a silent
+  loss; you would not even know they were missing).
+- **Spots to fix by hand** — consecutive edits collapsed into one spot, so a
+  22-word invented sentence counts as one spot.
+
+Four tiers are covered: `tiny`, `base` (the one the site ships), `small`, and a
+**cloud speech API used as a reference point only, not a recommendation**.
+
+| file | what it covers |
+|---|---|
+| `data/edit-load-8clips.csv` | the eight short clips, 229 reference words |
+| `data/edit-load-longfiles.csv` | three long files, 7,385 reference words (L1 ≈ 5.6 min, L2 ≈ 13.1 min, L3 ≈ 27.9 min) |
+
+Totals, both batches:
+
+| tier | 8-clip dropped / spots | long-file dropped / spots |
+|---|---|---|
+| tiny | 15 / 31 | 356 / 601 |
+| base (shipped) | 13 / 23 | 558 / 404 |
+| small | 7 / 18 | 379 / 268 |
+| cloud reference | 7 / 16 | 111 / 592 |
+
+Read the two columns separately. On the long files `small` needs the fewest
+hand-fixes (268 vs 592); the cloud reference drops the fewest words (111 vs 379,
+about 3.4× fewer). They do not beat each other; they win on different things,
+so the page says "about the same", not "more accurate".
+
+**Cloud reference row — exactly what it was measured on** (no number goes on the
+page without all of this written down):
+
+- Service and API version: Google Cloud Speech-to-Text, v1.
+- Method: 8 short clips — synchronous recognition; three long files — long-running
+  recognition (the synchronous method rejects audio longer than 1 minute:
+  `Sync input too long`).
+- Model: `model` not specified, so the API default was used. Chirp / Chirp 2 were
+  not selected.
+- Date called: 2026-09-27 (8 clips), 2026-09-28 (three long files).
+- Parameters: `languageCode: en-US`, `enableAutomaticPunctuation: true`,
+  `encoding: MP3`.
+- How called: from this machine, with Application Default Credentials; the project
+  was named on each call. Long files were uploaded to Cloud Storage first and
+  passed in as a `gs://` URI.
+- Audio path: the **same MP3 files**, not two sets. The local tiers and the cloud
+  API ran on the identical files (LibriSpeech `dev-clean` FLAC re-encoded to 16 kHz
+  mono MP3; 64 kb/s for the long files, 24 kb/s for the 8 clips, A-clean being
+  24 kHz / 48 kb/s — the one exception, same file both sides).
+
+These two tables are the data behind the site's `/transcription-benchmark/` page.
 
 ## Running the scripts yourself
 
