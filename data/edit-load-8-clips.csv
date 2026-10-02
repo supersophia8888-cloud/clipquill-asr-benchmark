@@ -1,0 +1,10 @@
+﻿sample_id,condition,reference_words,tiny_miss,tiny_spots,base_miss,base_spots,small_miss,small_spots,cloud_miss,cloud_spots,tiny_sub,base_sub,small_sub,cloud_sub
+A-clean,"clean synthetic speech",33,0,1,0,1,0,0,0,2,1,1,0,2
+C1-real-clean,"real speech, no added noise",17,0,0,0,1,0,1,0,1,3,1,1,1
+C2-real-clean,"real speech, no added noise",11,0,1,0,0,0,1,1,1,4,2,1,3
+D1-real-noise-light,"real speech with light background noise",32,0,3,0,0,0,1,0,0,13,2,1,0
+D2-real-noise-light,"real speech with light background noise",25,0,3,0,0,0,3,0,0,11,3,3,0
+B-hard,"real speech, telephone band with echo and hiss",22,3,3,1,1,0,0,0,0,11,4,0,0
+E2-real-noise-heavy,"real speech with heavy background noise",18,2,2,0,0,0,1,0,1,12,2,1,1
+E1-real-noise-heavy,"real speech with heavy background noise",71,0,7,3,4,1,1,6,11,62,19,12,15
+ALL,"all 8 clips",229,5,20,4,6,1,2,7,16,117,34,20,22

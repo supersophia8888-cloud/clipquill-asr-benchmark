@@ -1,0 +1,6 @@
+﻿sample_id,reference_words,tiny_miss,tiny_spots,base_miss,base_spots,small_miss,small_spots,cloud_miss,cloud_spots
+L1,823,23,47,15,21,7,11,,,
+L2,2054,104,80,29,42,16,27,,,
+L3,4508,76,146,38,70,22,41,,,
+ALL,7385,203,273,82,133,45,79,,,
+cloud_reference,7385,,,,,,,111,592
