@@ -31,7 +31,12 @@ by total reference words, not an average of per-clip percentages.
 `typical_clean_and_light_real_speech` row: the four non-stress real-speech clips
 (C1, C2, D1, D2 — 85 reference words), i.e. clean plus light-noise. It is a
 cross-condition grouping, not an acoustic condition, and it is the realistic
-number the site headlines (9.4 % `base` / 8.2 % `small`).
+number the site headlines (7.1 % `moonshine-base` / 8.2 % `whisper-small`).
+
+**`moonshine_base_*` columns.** Both CSVs also carry a `moonshine_base_wer_pct`
+column (`wer-by-sample.csv` adds `moonshine_base_error_words` too). Moonshine
+base (1st generation) is the English-only model the site ships for English; the
+`whisper-*` columns cover the multilingual tiers. Same clips, same scorer.
 
 **Word counting.** The scorer splits possessive apostrophes into separate
 tokens, so a whitespace word count of the reference files comes out lower for
