@@ -5,3 +5,4 @@ real_speech_light_pink_noise,2,57,59.6,8.8,8.8
 real_speech_heavy_pink_noise,2,89,143.8,34.8,16.9
 real_speech_telephone_band_echo,1,22,68.2,22.7,0.0
 ALL,8,229,81.7,20.1,9.6
+typical_clean_and_light_real_speech,4,85,49.4,9.4,8.2

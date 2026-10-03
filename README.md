@@ -48,9 +48,14 @@ with the scripts that produced every number.
 If you are building an in-browser transcription page, the two results worth
 knowing before you pick a model tier:
 
-1. **On clean synthetic audio the two tiers tie.** If that is all you test, you
-   will conclude the tier does not matter, and you will be wrong. On real speech
-   with noise, `tiny` collapses: weighted WER 81.7 % against `base` at 20.1 %.
+1. **On the audio most people actually record, the default tier is accurate.**
+   Across the four clean and light-noise real-speech clips — 85 reference words,
+   the kind of voice memo or interview a normal user uploads — `base` is
+   **9.4 %** wrong and the optional `small` tier is **8.2 %** wrong
+   (measured 2026-10-03). Test only clean synthetic audio and the two tiers look
+   tied; test deliberately harsh audio (telephone band, heavy pink noise) and
+   `tiny` collapses to 81.7 % against `base` at 20.1 % on the full eight-clip
+   set. The realistic number is the one to design around.
 2. **"Smaller model is faster" does not hold past about 13 seconds of audio.**
    On byte-identical long audio `base` finished 1.5–2.3× sooner than `tiny`.
    The mechanism is not fully pinned down here (see `METHOD.md`).
@@ -72,16 +77,27 @@ METHOD.md how each number was measured, and what is not covered
 
 ## The headline table
 
-Weighted WER by acoustic condition, 8 clips / 229 reference words:
+**On the audio most people actually have — four clean and light-noise
+real-speech clips, 85 reference words — the default `base` tier is 9.4 % wrong
+and the optional `small` tier is 8.2 % wrong (measured 2026-10-03).** That is
+the number to design around for a normal user.
+
+The full eight-clip set, by acoustic condition (229 reference words):
 
 | condition | clips | words | tiny | base |
 |---|---|---|---|---|
 | clean synthetic TTS | 1 | 33 | 6.1 % | 6.1 % |
 | real speech, no noise | 2 | 28 | 28.6 % | 10.7 % |
 | real speech, light pink noise | 2 | 57 | 59.6 % | 8.8 % |
-| real speech, heavy pink noise | 2 | 89 | 143.8 % | 34.8 % |
-| real speech, telephone band + echo | 1 | 22 | 68.2 % | 22.7 % |
-| **all** | **8** | **229** | **81.7 %** | **20.1 %** |
+| real speech, heavy pink noise * | 2 | 89 | 143.8 % | 34.8 % |
+| real speech, telephone band + echo * | 1 | 22 | 68.2 % | 22.7 % |
+| **all eight** | **8** | **229** | **81.7 %** | **20.1 %** |
+
+\* deliberately harsh conditions, not typical of consumer recordings — kept
+separate so the realistic number above is not dragged up by stress tests.
+The four non-starred real-speech rows (clean + light noise, 85 words) combine to
+`base` 9.4 % / `small` 8.2 %; see the `typical_clean_and_light_real_speech`
+row in `data/wer-by-condition.csv`.
 
 `base` is better on 7 of 8 clips and tied on the eighth. It is not worse on any.
 
