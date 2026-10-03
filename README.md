@@ -34,9 +34,9 @@ configs:
   - config_name: decode_format_support
     data_files: data/decode-format-support.csv
   - config_name: edit_load_8clips
-    data_files: data/edit-load-8clips.csv
+    data_files: data/edit-load-8-clips.csv
   - config_name: edit_load_longfiles
-    data_files: data/edit-load-longfiles.csv
+    data_files: data/edit-load-long-files.csv
 ---
 
 # Measuring whisper-tiny vs whisper-base in a browser tab
@@ -50,7 +50,7 @@ knowing before you pick a model tier:
 
 1. **On clean synthetic audio the two tiers tie.** If that is all you test, you
    will conclude the tier does not matter, and you will be wrong. On real speech
-   with noise, `tiny` collapses: weighted WER 59.0 % against `base` at 19.7 %.
+   with noise, `tiny` collapses: weighted WER 81.7 % against `base` at 20.1 %.
 2. **"Smaller model is faster" does not hold past about 13 seconds of audio.**
    On byte-identical long audio `base` finished 1.5–2.3× sooner than `tiny`.
    The mechanism is not fully pinned down here (see `METHOD.md`).
@@ -77,13 +77,18 @@ Weighted WER by acoustic condition, 8 clips / 229 reference words:
 | condition | clips | words | tiny | base |
 |---|---|---|---|---|
 | clean synthetic TTS | 1 | 33 | 6.1 % | 6.1 % |
-| real speech, no noise | 2 | 28 | 21.4 % | 10.7 % |
-| real speech, light pink noise | 2 | 57 | 54.4 % | 8.8 % |
-| real speech, heavy pink noise | 2 | 89 | 92.1 % | 33.7 % |
-| real speech, telephone band + echo | 1 | 22 | 63.6 % | 22.7 % |
-| **all** | **8** | **229** | **59.0 %** | **19.7 %** |
+| real speech, no noise | 2 | 28 | 28.6 % | 10.7 % |
+| real speech, light pink noise | 2 | 57 | 59.6 % | 8.8 % |
+| real speech, heavy pink noise | 2 | 89 | 143.8 % | 34.8 % |
+| real speech, telephone band + echo | 1 | 22 | 68.2 % | 22.7 % |
+| **all** | **8** | **229** | **81.7 %** | **20.1 %** |
 
 `base` is better on 7 of 8 clips and tied on the eighth. It is not worse on any.
+
+> `tiny` is not reproducible on the hardest clip (E1 ranges 84.5–111.3 % across
+> runs), so its all-clips figure is one run, not a stable measurement. The
+> retuned engine's gains show up in the edit-load tables below (fewer words
+> dropped), not in `tiny`'s word-error rate.
 
 ## Edit-load tables (2026-09-28 expansion)
 
@@ -101,22 +106,26 @@ Four tiers are covered: `tiny`, `base` (the one the site ships), `small`, and a
 
 | file | what it covers |
 |---|---|
-| `data/edit-load-8clips.csv` | the eight short clips, 229 reference words |
-| `data/edit-load-longfiles.csv` | three long files, 7,385 reference words (L1 ≈ 5.6 min, L2 ≈ 13.1 min, L3 ≈ 27.9 min) |
+| `data/edit-load-8-clips.csv` | the eight short clips, 229 reference words |
+| `data/edit-load-long-files.csv` | three long files, 7,385 reference words (L1 ≈ 5.6 min, L2 ≈ 13.1 min, L3 ≈ 27.9 min) |
 
 Totals, both batches:
 
 | tier | 8-clip dropped / spots | long-file dropped / spots |
 |---|---|---|
-| tiny | 15 / 31 | 356 / 601 |
-| base (shipped) | 13 / 23 | 558 / 404 |
-| small | 7 / 18 | 379 / 268 |
+| tiny | 5 / 20 | 203 / 273 |
+| base (shipped) | 4 / 6 | 82 / 133 |
+| small | 1 / 2 | 45 / 79 |
 | cloud reference | 7 / 16 | 111 / 592 |
 
-Read the two columns separately. On the long files `small` needs the fewest
-hand-fixes (268 vs 592); the cloud reference drops the fewest words (111 vs 379,
-about 3.4× fewer). They do not beat each other; they win on different things,
-so the page says "about the same", not "more accurate".
+Read the two columns separately. On the long files the local tiers now lead
+**both** columns: `small` needs the fewest hand-fixes (79, against the cloud
+reference's 592) and drops the fewest words (45, against 111). The cloud
+reference is printed only as a reference point, not a recommendation — it is a
+different system that uploads your audio, whereas the local tiers keep it on
+your device. On the eight short clips, by contrast, the four tiers land close
+enough (the cloud reference drops 7 and needs 16 hand-fixes; `small` drops 1 and
+needs 2) that we still say "about the same".
 
 **Cloud reference row — exactly what it was measured on** (no number goes on the
 page without all of this written down):
