@@ -33,6 +33,12 @@ configs:
     data_files: data/chinese-cer-one-clip.csv
   - config_name: decode_format_support
     data_files: data/decode-format-support.csv
+  - config_name: container_codec_matrix
+    data_files: data/container-codec-matrix.csv
+  - config_name: page_decode_endtoend
+    data_files: data/page-decode-endtoend.csv
+  - config_name: video_track_ignored
+    data_files: data/video-track-ignored.csv
   - config_name: edit_load_8clips
     data_files: data/edit-load-8-clips.csv
   - config_name: edit_load_longfiles
@@ -183,6 +189,10 @@ node scripts/run-ab.mjs            # WER, both tiers, the eight clips
 node scripts/run-timing.mjs        # same-material A/B timing
 node scripts/run-timing-live.mjs   # cold/warm timing against the live page
 node scripts/run-formats.mjs       # which containers decodeAudioData accepts
+node scripts/run-container-codec-matrix.mjs   # same audio, 20 containers and codecs
+node scripts/run-page-endtoend.mjs            # the live page's own verdict, file by file
+bash scripts/build-video-track-set.sh <out> <speech-a.mp3> <speech-b.mp3>
+node scripts/run-video-track.mjs              # with a picture, without one, without audio
 node scripts/run-zh.mjs            # the Mandarin clip
 python scripts/cer-zh.py           # the three CER normalizations
 ```

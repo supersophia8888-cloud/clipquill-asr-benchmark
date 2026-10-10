@@ -1,0 +1,10 @@
+file,container,video_track,picture_size,video_fps,audio_codec,bytes,decode_outcome,decoded_duration_s,decoded_channels,decoded_sample_rate_hz,page_outcome,page_seconds,transcript_chars,transcript_sha256
+a-only.m4a,m4a,no,,,aac,128668,decoded,9.984,1,44100,transcribed,31.8,190,029ec35ff1c82c7e
+a-only.mp3,mp3,no,,,mp3,160940,decoded,9.984,1,44100,transcribed,9.9,190,029ec35ff1c82c7e
+v-64.mp4,mp4,yes,64x64,1,aac,142010,decoded,9.984,1,44100,transcribed,8.5,190,029ec35ff1c82c7e
+v-320.mp4,mp4,yes,320x240,10,aac,472305,decoded,9.984,1,44100,transcribed,8.6,190,029ec35ff1c82c7e
+v-1080.mp4,mp4,yes,1920x1080,30,aac,24948245,decoded,9.984,1,44100,transcribed,8.6,190,029ec35ff1c82c7e
+v-1080.mov,mov,yes,1920x1080,30,aac,24948296,decoded,9.984,1,44100,transcribed,8.5,190,029ec35ff1c82c7e
+v-1080.mkv,mkv,yes,1920x1080,30,aac,24946190,decoded,10.027,1,44100,transcribed,8.5,190,029ec35ff1c82c7e
+no-audio.mp4,mp4,yes,320x240,10,none,335497,refused,,,,refused,0.6,0,
+v-320-otheraudio.mp4,mp4,yes,320x240,10,aac,248409,decoded,5.855,1,44100,transcribed,6.7,88,ae9a38cfd60f2206

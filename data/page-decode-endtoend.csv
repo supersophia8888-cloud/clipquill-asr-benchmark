@@ -1,0 +1,10 @@
+file,container,audio_codec,page_outcome,seconds_to_verdict,page_message
+p1.mp4,mp4,mp3,accepted,37,Done. 1s of audio transcribed in 36.0s on this device.
+p1.mkv,mkv,mp3,accepted,35,Done. 2s of audio transcribed in 34.1s on this device.
+p1.mov,mov,mp3,accepted,44,Done. 1s of audio transcribed in 42.5s on this device.
+p1.ts,ts,mp3,refused,1,"Could not decode this file. The browser could not read its audio track. Try MP4, MOV, WEBM, M4A, MP3, WAV, AAC or OGG."
+p2-ac3.mp4,mp4,ac3,refused,1,"Could not decode this file. The browser could not read its audio track. Try MP4, MOV, WEBM, M4A, MP3, WAV, AAC or OGG."
+p2-opus.mp4,mp4,opus,accepted,24,Done. 2s of audio transcribed in 24.2s on this device.
+p2-vorbis.mp4,mp4,vorbis,accepted,28,Done. 2s of audio transcribed in 27.2s on this device.
+p2-mp3.mp4,mp4,mp3,accepted,28,Done. 1s of audio transcribed in 26.1s on this device.
+p2-aac.mp4,mp4,aac,accepted,19,Done. 2s of audio transcribed in 18.5s on this device.

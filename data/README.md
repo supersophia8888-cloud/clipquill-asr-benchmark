@@ -19,6 +19,9 @@ for what these numbers do **not** cover.
 | `chinese-cer-one-clip.csv` | Mandarin character error rate, three normalizations |
 | `chinese-residual-errors.md` | The 6 remaining wrong characters, listed one by one |
 | `decode-format-support.csv` | Which containers the browser can decode in-page |
+| `container-codec-matrix.csv` | The same 2 s of audio written 20 ways across containers and codecs |
+| `page-decode-endtoend.csv` | What the live page itself says when handed each of those files |
+| `video-track-ignored.csv` | One speech clip with and without a picture, end to end through the page |
 
 ## Conventions
 
@@ -133,5 +136,41 @@ inconsistent and the file failed to load. Nothing was reworded.
 # bytes_on_wire = what actually crossed the network (brotli where applicable)
 # bytes_decoded = size after decompression. ONNX weights barely compress, which
 # is why 74.0 of the 78.4 MiB first-visit total is model weights at full size.
+```
+
+### container-codec-matrix.csv
+
+```
+# One 2 s audio stream (a 440 Hz tone from the decode-format-support run) written
+# 20 different ways: same audio, different container and codec, plus four files
+# built from the same material that the browser refuses outright.
+# bytes = the file as written by ffmpeg. decoded / duration_s = the result of
+# AudioContext.decodeAudioData() in a real Chrome window, 2026-09-26.
+# Script: scripts/run-container-codec-matrix.mjs.
+```
+
+### page-decode-endtoend.csv
+
+```
+# The same file set handed to the live page's own file input, one file per page
+# load, 2026-09-26. page_outcome / page_message are the page's own words, read
+# back from its status line; nothing here is inferred.
+# Script: scripts/run-page-endtoend.mjs.
+```
+
+### video-track-ignored.csv
+
+```
+# Does the picture reach the recognizer? One 9.984 s speech clip muxed into nine
+# files, measured 2026-10-11 on the live page.
+# Seven files carry the identical audio track and differ only in the container
+# and in the picture attached to it (none / 64x64 @1 fps / 320x240 @10 fps /
+# 1920x1080 @30 fps, in mp4, mov and mkv). One carries a picture and no audio
+# track. One carries the same picture as v-320.mp4 but different speech.
+# decoded_* = AudioContext.decodeAudioData() geometry, part A.
+# page_outcome / page_seconds = the live page's own status line, part B.
+# transcript_chars / transcript_sha256 = the page's own output text, hashed.
+# Build: scripts/build-video-track-set.sh (ffmpeg 9.0.1; byte counts depend on
+# the x264 build). Run: scripts/run-video-track.mjs.
 ```
 
